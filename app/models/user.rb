@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
    where(auth.slice(:provider, :uid)).first_or_create do |user|
      user.provider = auth.provider
      user.uid = auth.uid
+     user.email = auth.info.email
      user.username = auth.info.nickname
    end
   end
