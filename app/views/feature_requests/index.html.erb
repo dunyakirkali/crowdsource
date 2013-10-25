@@ -1,0 +1,27 @@
+<h1>Listing feature_requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feature_requests.each do |feature_request| %>
+      <tr>
+        <td><%= feature_request.title %></td>
+        <td><%= link_to 'Show', feature_request %></td>
+        <td><%= link_to 'Edit', edit_feature_request_path(feature_request) %></td>
+        <td><%= link_to 'Destroy', feature_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Feature request', new_feature_request_path %>
