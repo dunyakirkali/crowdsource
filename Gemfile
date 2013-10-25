@@ -15,6 +15,7 @@ gem 'devise'
 gem 'omniauth-github'
 gem 'octokit', '~> 2.0'
 gem 'foreman'
+gem 'unicorn'
 
 group :test do
   gem 'cucumber-rails', :require => false
