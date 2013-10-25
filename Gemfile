@@ -12,7 +12,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'rails_12factor'
 gem 'devise'
-gem 'github_api'
+gem 'octokit', '~> 2.0'
 
 group :test do
   gem 'cucumber-rails', :require => false
