@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'rails_12factor'
 gem 'devise'
+gem 'omniauth-github'
 gem 'octokit', '~> 2.0'
 
 group :test do
