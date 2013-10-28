@@ -1,0 +1,23 @@
+p Your Repos
+- @repos.each do |repo|
+  ul
+    li
+	  p= repo.name
+	  - repo.rels[:branches].get.data.each do |branch|
+        ul
+		  li
+		  	= branch.name
+			= link_to '$$$', ''
+
+p Your Stars
+- @stars.each do |repo|
+  ul
+    li
+	  p= repo.name
+	  - repo.rels[:branches].get.data.each do |branch|
+        ul
+		  li
+		  	= branch.name
+			= link_to '$$$', ''
+br
+= link_to 'New Feature request', new_user_feature_path
