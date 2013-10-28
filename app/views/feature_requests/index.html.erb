@@ -1,27 +1,30 @@
-<h1>Listing feature_requests</h1>
+<p>Your Repos</p>
+<% @repos.each do |repo| %>
+	<ul>
+		<li>
+			<p><%= repo.name %></p>
+			<% repo.rels[:branches].get.data.each do |branch| %>
+				<ul>
+					<li><%= branch.name %><%= link_to '$$$', '' %></li>
+				</ul>
+			<% end %>
+		</li>	
+	</ul>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @feature_requests.each do |feature_request| %>
-      <tr>
-        <td><%= feature_request.title %></td>
-        <td><%= link_to 'Show', feature_request %></td>
-        <td><%= link_to 'Edit', edit_feature_request_path(feature_request) %></td>
-        <td><%= link_to 'Destroy', feature_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!-- <p>Your Stars</p>
+<% @stars.each do |star| %>
+	<ul>
+		<li>
+			<p><%= star.name %></p>
+			<% star.rels[:branches].get.data.each do |branch| %>
+				<ul>
+					<li><%= branch.name %><%= link_to '$$$', '' %></li>
+				</ul>
+			<% end %>
+		</li>	
+	</ul>
+<% end %> -->
 
 <br>
-
-<%= link_to 'New Feature request', new_feature_request_path %>
+<%= link_to 'New Feature request', new_user_feature_path %>

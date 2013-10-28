@@ -1,9 +1,25 @@
+require 'pp'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
+  
+  def stars
+    github.rels[:starred].get.data
+  end
+         
+  def repos
+    github.rels[:repos].get.data
+  end
+  
+  def github
+    # Provide authentication credentials
+    client = Octokit::Client.new :access_token => self.token
+    # Fetch the current user
+    client.user
+  end
          
   def self.from_omniauth(auth)
    where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -11,6 +27,7 @@ class User < ActiveRecord::Base
      user.uid = auth.uid
      user.email = auth.info.email
      user.username = auth.info.nickname
+     user.token = auth.credentials.token
    end
   end
   

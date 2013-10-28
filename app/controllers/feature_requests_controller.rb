@@ -4,7 +4,11 @@ class FeatureRequestsController < ApplicationController
   # GET /feature_requests
   # GET /feature_requests.json
   def index
-    @feature_requests = FeatureRequest.all
+    @user = User.find(params[:user_id])
+    @repos = @user.repos
+    @stars = @user.stars    
+    # @branches = @user.branches
+    # @feature_requests = FeatureRequest.all
   end
 
   # GET /feature_requests/1
