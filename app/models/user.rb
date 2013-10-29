@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+  has_many :feature_requests
   
   def stars
     github.rels[:starred].get.data

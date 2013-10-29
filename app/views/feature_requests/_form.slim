@@ -10,5 +10,13 @@
 	= f.label :title
 	br
 	= f.text_field :title
+  .field
+	= f.label :repo_id
+	br
+	= f.select :repo_id, options_for_select(@repos.collect{ |u| [u.name, u.id] })
+  .field
+	= f.label :user_id
+	br
+	= f.hidden_field :user_id, :value => @user.id
   .actions
     = f.submit

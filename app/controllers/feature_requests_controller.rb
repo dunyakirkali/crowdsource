@@ -1,32 +1,23 @@
 class FeatureRequestsController < ApplicationController
   before_action :set_feature_request, only: [:show, :edit, :update, :destroy]
 
-  # GET /feature_requests
-  # GET /feature_requests.json
   def index
     @user = User.find(params[:user_id])
-    @repos = @user.repos
-    @stars = @user.stars    
-    # @branches = @user.branches
-    # @feature_requests = FeatureRequest.all
+    @feature_requests = @user.feature_requests
   end
 
-  # GET /feature_requests/1
-  # GET /feature_requests/1.json
   def show
   end
 
-  # GET /feature_requests/new
   def new
+    @user = User.find(params[:user_id])
+    @repos = @user.repos
     @feature_request = FeatureRequest.new
   end
 
-  # GET /feature_requests/1/edit
   def edit
   end
 
-  # POST /feature_requests
-  # POST /feature_requests.json
   def create
     @feature_request = FeatureRequest.new(feature_request_params)
 
@@ -41,8 +32,6 @@ class FeatureRequestsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /feature_requests/1
-  # PATCH/PUT /feature_requests/1.json
   def update
     respond_to do |format|
       if @feature_request.update(feature_request_params)
@@ -73,6 +62,6 @@ class FeatureRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_request_params
-      params.require(:feature_request).permit(:title)
+      params.require(:feature_request).permit(:title, :repo_id)
     end
 end

@@ -1,14 +1,6 @@
-p Your Repos
-- @repos.each do |repo|
-  ul
-    li
-	  p= repo.name
-	  - repo.rels[:branches].get.data.each do |branch|
-        ul
-		  li
-		  	= branch.name
-			= link_to '$$$', ''
-
-
+p Your Feature Requests
+- @feature_requests.each do |feature_request|
+  p= feature_request.title
+  / p= feature_request.repo
 br
 = link_to 'New Feature request', new_user_feature_path
